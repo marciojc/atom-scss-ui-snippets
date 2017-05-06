@@ -1,0 +1,121 @@
+'.source.scss':
+  'Scss ui element button':
+    'prefix': 'ui-button'
+    'body': """
+      .button {
+        @include conf('type.button');
+
+        appearance: none;
+        background: none;
+        border: 1px solid $1;
+        box-shadow: inset 0 0 0 2px transparent;
+        color: $2;
+        cursor: pointer;
+        display: inline-block;
+        margin: 0;
+        outline: 0;
+        padding: 11px 50px;
+        text-align: center;
+        text-decoration: none;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          box-shadow: inset 0 0 0 2px $1;
+        }
+
+        &.secondary {
+          background: $3;
+          border: 0;
+          color: $4;
+
+          &.disabled,
+          &:disabled {
+            background: $5;
+            color: $6;
+          }
+
+          &:hover {
+            background: $7;
+            box-shadow: none;
+          }
+
+          &.dark-background {
+            background: $8;
+            color: $9;
+
+            &.disabled,
+            &:disabled {
+              background: $10;
+              color: $11;
+              pointer-events: none;
+            }
+          }
+        }
+
+        &.disabled,
+        &:disabled {
+          border-color: $12;
+          color: $6;
+          pointer-events: none;
+        }
+
+        &.small {
+          @include $13;
+          @include font-size(14, 14, -.4);
+
+          padding: 9px 10px 6px;
+          text-transform: none;
+        }
+
+        &.wide {
+          width: 100%;
+        }
+
+        &.big {
+          padding-bottom: 20px;
+          padding-top: 19px;
+        }
+
+        &.iconed {
+          i {
+            margin-right: 15px;
+
+            &::before { font-size: 20px; }
+          }
+
+          i,
+          span {
+            display: inline-block;
+            vertical-align: middle;
+          }
+        }
+
+        &.light {
+          border-color: $14;
+          color: $15;
+
+          &:hover {
+            border-color: rgba($14, .6);
+            box-shadow: inset 0 0 0 1px rgba($4, .6);
+            color: rgba($4, .6);
+          }
+
+          &.disabled,
+          &:disabled {
+            background: none;
+            border-color: rgba($14, .2);
+            color: rgba($4, .2);
+          }
+
+          &.secondary {
+            background: $4;
+            color: $2;
+
+            &:hover { opacity: .6; }
+
+            &.disabled,
+            &:disabled { opacity: .3; }
+          }
+        }
+      }
+    """

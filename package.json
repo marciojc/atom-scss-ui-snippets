@@ -1,0 +1,28 @@
+{
+  "name": "atom-scss-ui-snippets",
+  "version": "0.0.1",
+  "description": "Scss ui snippets",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marciojc/atom-scss-ui-snippets.git"
+  },
+  "keywords": [
+    "atom",
+    "scss",
+    "ui",
+    "elements",
+    "snippets"
+  ],
+  "author": {
+    "name": "Márcio Coelho",
+    "email": "marciojc@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marciojc/atom-scss-ui-snippets/issues"
+  },
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/marciojc/atom-scss-ui-snippets#readme"
+}

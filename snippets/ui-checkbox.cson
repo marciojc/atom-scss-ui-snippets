@@ -1,0 +1,97 @@
+'.source.scss':
+  'Scss ui element checkbox':
+    'prefix': 'ui-checkbox'
+    'body': """
+      .checkbox {
+        display: block;
+        margin: 0;
+        padding: 9px 0 9px 40px;
+        position: relative;
+        vertical-align: middle;
+
+        .ff-wrapper {
+          @include position(absolute, null 0 null 0);
+          @include size(30px);
+
+          padding: 0;
+          text-align: center;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        input {
+          @include position(absolute, 0 null null -99999px);
+          @include appearance(none);
+          @include size(0);
+
+          border: 0;
+          padding: 0;
+
+          &:hover,
+          &:focus {
+            box-shadow: none;
+
+            + .ff-toggleable {
+              border-color: $1;
+              box-shadow: inset 0 0 0 1px $1;
+            }
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          &:checked + .ff-toggleable::after {
+            @include position(absolute, 0 null null 5px);
+            @include size(20px);
+            @include icon('checkmark');
+
+            color: $2;
+            font-size: 14px;
+            text-align: center;
+          }
+
+          &:disabled,
+          &.disabled {
+            + .ff-toggleable {
+              border-color: $3;
+
+              &:hover {
+                border-color: $3;
+              }
+            }
+
+            &:checked + .ff-toggleable::after {
+              color: $3;
+            }
+
+            &:hover,
+            &:focus {
+              box-shadow: none;
+
+              + .ff-toggleable {
+                box-shadow: none;
+              }
+            }
+          }
+        }
+
+        &.disabled {
+          color: $3;
+        }
+
+        .ff-toggleable {
+          @include transition(box-shadow .2s ease-in-out);
+          @include size(30px);
+
+          background: $4;
+          border: 1px solid $5;
+          box-shadow: inset 0 0 0 1px transparent;
+          cursor: pointer;
+
+          &:hover {
+            border-color: $1;
+          }
+        }
+      }
+    """

@@ -1,0 +1,163 @@
+'.source.scss':
+  'Scss ui element accordion':
+    'prefix': 'ui-accordion'
+    'body': """
+      .accordion {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        > li {
+          border-bottom: 1px solid $1;
+          color: $2;
+          position: relative;
+
+          + li {
+            margin-top: 10px;
+          }
+
+          &.always-open {
+            input[type=checkbox] { // scss-lint:disable QualifyingElement
+              &:hover,
+              &:focus {
+                // scss-lint:disable NestingDepth
+                ~ label {
+                  color: $2;
+                  pointer-events: none;
+
+                  + .content {
+                    border-color: $1;
+                    z-index: 1;
+                  }
+                }
+                // scss-lint:enable NestingDepth
+              }
+            }
+
+            label {
+              pointer-events: none;
+
+              &::before { display: none; }
+            }
+
+            .content {
+              border-color: $1;
+              max-height: 2500px;
+            }
+          }
+        }
+
+        label {
+          @include font-size(20, 21);
+
+          background: $3;
+          display: block;
+          margin: 0;
+          padding: 18px 60px 18px 0;
+          position: relative;
+          transition: color .3s $ease-out-back;
+
+          &:hover {
+            color: $4;
+
+            &::before {
+              color: $4;
+            }
+          }
+
+          &::before {
+            @include position(absolute, 20px 20px null null);
+            @include icon('plus');
+            @include size(20px);
+
+            color: conf('color.red.prime');
+            font-size: 20px;
+            transition: all .3s $ease-out-back;
+          }
+        }
+
+        input[type='radio'],      //scss-lint:disable QualifyingElement
+        input[type='checkbox'] {
+          @include position(absolute, 0 0 0 0);
+          @include size(100%);
+
+          appearance: none;
+          cursor: pointer;
+          opacity: 0;
+          outline: none;
+          z-index: 1;
+
+          &:checked {
+            ~ label {
+              color: $4;
+            }
+
+            ~ label::before {
+              @include icon('minus');
+
+              color: $4;
+            }
+
+            ~ .content {
+              border-color: $1;
+              max-height: 2500px;
+              overflow-y: auto;
+              transition: max-height .3s ease-in;
+            }
+          }
+
+          &:hover,
+          &:focus {
+            ~ label {
+              color: $4;
+
+              &::after {
+                background: $4;
+              }
+
+              &::before {
+                color: $4;
+              }
+
+              + .content {
+                border-color: transparent;
+                z-index: 1;
+              }
+            }
+          }
+        }
+
+        .content {
+          background: $3;
+          border-top: 1px solid transparent;
+          font-size: 16px;
+          margin: 0;
+          max-height: 0;
+          overflow: hidden;
+          position: relative;
+          transition: max-height .3s ease-out;
+          z-index: 1;
+
+          .content-copy {
+            @include conf('type.p');
+
+            color: $5;
+            padding: 30px 0;
+          }
+
+          > * {
+            margin: 0;
+            padding: 0;
+          }
+
+          .checkboxes.field label:first-child,
+          .radios.field label:first-child {
+            margin-top: 0;
+          }
+        }
+
+        + .accordion {
+          margin-top: -1px;
+        }
+      }
+    """
