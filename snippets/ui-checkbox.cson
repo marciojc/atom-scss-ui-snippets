@@ -2,10 +2,21 @@
   'Scss ui element checkbox':
     'prefix': 'ui-checkbox'
     'body': """
+      $checkbox-background: $1;
+      $checkbox-border-color: $2;
+      $checkbox-border: 1px solid $3;
+      $checkbox-color: $4;
+      $checkbox-disabled-border-color: $5;
+      $checkbox-disabled-color: $checkbox-disabled-border-color;
+      $checkbox-font-size: 14px;
+      $checkbox-hover-border-color: $checkbox-border-color;
+      $checkbox-margin: 0;
+      $checkbox-padding: 9px 0 9px 40px;
+
       .checkbox {
         display: block;
-        margin: 0;
-        padding: 9px 0 9px 40px;
+        margin: $checkbox-margin;
+        padding: $checkbox-padding;
         position: relative;
         vertical-align: middle;
 
@@ -32,8 +43,8 @@
             box-shadow: none;
 
             + .ff-toggleable {
-              border-color: $1;
-              box-shadow: inset 0 0 0 1px $1;
+              border-color: $checkbox-hover-border-color;
+              box-shadow: inset 0 0 0 1px $checkbox-hover-border-color;
             }
           }
 
@@ -46,23 +57,23 @@
             @include size(20px);
             @include icon('checkmark');
 
-            color: $2;
-            font-size: 14px;
+            color: $checkbox-color;
+            font-size: $checkbox-font-size;
             text-align: center;
           }
 
           &:disabled,
           &.disabled {
             + .ff-toggleable {
-              border-color: $3;
+              border-color: $checkbox-disabled-border-color;
 
               &:hover {
-                border-color: $3;
+                border-color: $checkbox-disabled-border-color;
               }
             }
 
             &:checked + .ff-toggleable::after {
-              color: $3;
+              color: $checkbox-disabled-color;
             }
 
             &:hover,
@@ -77,20 +88,20 @@
         }
 
         &.disabled {
-          color: $3;
+          color: $checkbox-disabled-border-color;
         }
 
         .ff-toggleable {
           @include transition(box-shadow .2s ease-in-out);
           @include size(30px);
 
-          background: $4;
-          border: 1px solid $5;
+          background: $checkbox-background;
+          border: $checkbox-border;
           box-shadow: inset 0 0 0 1px transparent;
           cursor: pointer;
 
           &:hover {
-            border-color: $1;
+            border-color: $checkbox-border-color;
           }
         }
       }
