@@ -2,63 +2,50 @@
   'Scss ui element accordion':
     'prefix': 'ui-accordion'
     'body': """
+      $accordion-label-background: ;
+      $accordion-label-color: ;
+      $accordion-label-margin: 0;
+      $accordion-label-padding: 18px 60px 18px 0;
+      $accordion-transition: .3s;
+      $accordion-li-background: none;
+      $accordion-li-color: ;
+      $accordion-label-hover-background: ;
+      $accordion-label-hover-color: ;
+      $accordion-icon-color: ;
+      $accordion-icon-font-size: ;
+      $accordion-content-font-size: ;
+      $accordion-content-color: ;
+
+
       .accordion {
         list-style: none;
         margin: 0;
         padding: 0;
 
         > li {
+          background: $accordion-li-background;
           border-bottom: 1px solid $1;
-          color: $2;
+          color: $accordion-li-color;
           position: relative;
 
           + li {
             margin-top: 10px;
-          }
-
-          &.always-open {
-            input[type=checkbox] { // scss-lint:disable QualifyingElement
-              &:hover,
-              &:focus {
-                // scss-lint:disable NestingDepth
-                ~ label {
-                  color: $2;
-                  pointer-events: none;
-
-                  + .content {
-                    border-color: $1;
-                    z-index: 1;
-                  }
-                }
-                // scss-lint:enable NestingDepth
-              }
-            }
-
-            label {
-              pointer-events: none;
-
-              &::before { display: none; }
-            }
-
-            .content {
-              border-color: $1;
-              max-height: 2500px;
-            }
           }
         }
 
         label {
           @include font-size(20, 21);
 
-          background: $3;
+          background: $accordion-label-background;
           display: block;
-          margin: 0;
-          padding: 18px 60px 18px 0;
+          margin: $accordion-label-margin;
+          padding: $accordion-label-padding;
           position: relative;
-          transition: color .3s $ease-out-back;
+          transition: color $accordion-transition $ease-out-back;
 
           &:hover {
-            color: $4;
+            background: $accordion-label-hover-background;
+            color: $accordion-label-hover-color;
 
             &::before {
               color: $4;
@@ -70,9 +57,9 @@
             @include icon('plus');
             @include size(20px);
 
-            color: conf('color.red.prime');
-            font-size: 20px;
-            transition: all .3s $ease-out-back;
+            color: $accordion-icon-color;
+            font-size: $accordion-icon-font-size;
+            transition: all $accordion-transition $ease-out-back;
           }
         }
 
@@ -102,7 +89,7 @@
               border-color: $1;
               max-height: 2500px;
               overflow-y: auto;
-              transition: max-height .3s ease-in;
+              transition: max-height $accordion-transition ease-in;
             }
           }
 
@@ -130,18 +117,18 @@
         .content {
           background: $3;
           border-top: 1px solid transparent;
-          font-size: 16px;
+          font-size: $accordion-content-font-size;
           margin: 0;
           max-height: 0;
           overflow: hidden;
           position: relative;
-          transition: max-height .3s ease-out;
+          transition: max-height $accordion-transition ease-out;
           z-index: 1;
 
           .content-copy {
             @include conf('type.p');
 
-            color: $5;
+            color: $accordion-content-color;;
             padding: 30px 0;
           }
 
