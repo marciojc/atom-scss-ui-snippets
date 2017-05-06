@@ -2,68 +2,78 @@
   'Scss ui element button':
     'prefix': 'ui-button'
     'body': """
-      .button {
-        @include conf('type.button');
+      $background-color: $1;
+      $box-size: 2px;
+      $button-border: 1px solid $font-color;
+      $button-font-size: 12px;
+      $button-icon-font-size: 20px;
+      $button-padding-big: 19px 50px 20px;
+      $button-padding-small: 9px 10px 6px;
+      $button-padding: 11px 50px;
+      $button-radius: 0;
+      $button-text-decoration: none;
+      $disabled-border-color: $2;
+      $disabled-font-color: $3;
+      $font-color: $4;
+      $icon-margin-right: 15px;
+      $secondary-background-color: $5;
+      $secondary-disabled-background-color: $6;
+      $secondary-disabled-font-color: $7;
+      $secondary-font-color: $8;
+      $secondary-hover-background-color: $9;
+      $secondary-hover-font-color: $10;
+      $transition-time: .3s;
 
+      .button {
         appearance: none;
-        background: none;
-        border: 1px solid $1;
-        box-shadow: inset 0 0 0 2px transparent;
-        color: $2;
+        background: $background-color;
+        border: $button-border;
+        border-radius: $button-radius;
+        box-shadow: inset 0 0 0 $box-size transparent;
+        color: $font-color;
         cursor: pointer;
         display: inline-block;
+        font-size: $button-font-size;
         margin: 0;
         outline: 0;
-        padding: 11px 50px;
+        padding: $button-padding;
         text-align: center;
-        text-decoration: none;
-        transition: all .3s ease-in-out;
+        text-decoration: $button-text-decoration;
+        vertical-align: middle;
+        transition: all $transition-time ease-in-out;
+        // Gets rid of tap active state
+        -webkit-tap-highlight-color: transparent;
 
         &:hover {
-          box-shadow: inset 0 0 0 2px $1;
+          box-shadow: inset 0 0 0 $box-size-hover $border-color;
         }
 
         &.secondary {
-          background: $3;
+          background: $secondary-background-color;
           border: 0;
-          color: $4;
+          color: $secondary-font-color;
 
           &.disabled,
           &:disabled {
-            background: $5;
-            color: $6;
+            background: $secondary-disabled-background-color;
+            color: $secondary-disabled-font-color;
           }
 
           &:hover {
-            background: $7;
+            background: $secondary-hover-background-color;
             box-shadow: none;
-          }
-
-          &.dark-background {
-            background: $8;
-            color: $9;
-
-            &.disabled,
-            &:disabled {
-              background: $10;
-              color: $11;
-              pointer-events: none;
-            }
           }
         }
 
         &.disabled,
         &:disabled {
-          border-color: $12;
-          color: $6;
+          border-color: $disabled-border-color;
+          color: $disabled-font-color;
           pointer-events: none;
         }
 
         &.small {
-          @include $13;
-          @include font-size(14, 14, -.4);
-
-          padding: 9px 10px 6px;
+          padding: $padding-small;
           text-transform: none;
         }
 
@@ -72,15 +82,14 @@
         }
 
         &.big {
-          padding-bottom: 20px;
-          padding-top: 19px;
+          padding: $padding-big;
         }
 
         &.iconed {
           i {
-            margin-right: 15px;
+            margin-right: $icon-margin-right;
 
-            &::before { font-size: 20px; }
+            &::before { font-size: $button-icon-font-size; }
           }
 
           i,
@@ -90,32 +99,8 @@
           }
         }
 
-        &.light {
-          border-color: $14;
-          color: $15;
-
-          &:hover {
-            border-color: rgba($14, .6);
-            box-shadow: inset 0 0 0 1px rgba($4, .6);
-            color: rgba($4, .6);
-          }
-
-          &.disabled,
-          &:disabled {
-            background: none;
-            border-color: rgba($14, .2);
-            color: rgba($4, .2);
-          }
-
-          &.secondary {
-            background: $4;
-            color: $2;
-
-            &:hover { opacity: .6; }
-
-            &.disabled,
-            &:disabled { opacity: .3; }
-          }
+        &.button-block {
+          display: block;
         }
       }
     """
